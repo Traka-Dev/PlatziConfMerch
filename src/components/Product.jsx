@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Product = ({ product }) => {
+export const Product = ({ product, handleClick }) => {
 
     return (
         <div className="Products-item">
@@ -12,7 +12,7 @@ export const Product = ({ product }) => {
                 </h2>
                 <p>{product.description}</p>
             </div>
-            <button type='button'>Comprar</button>
+            <button type='button' onClick={handleClick(product)}>Comprar</button>
         </div>
     )
 }
