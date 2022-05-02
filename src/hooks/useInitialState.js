@@ -19,9 +19,17 @@ export const useInitialState = () => {
         })
     }
 
+    const addToBuyer = payload => {
+        setState({
+            ...state,
+            buyer: [...buyer, payload],
+        })
+    }
+
     return {
         addToCart,
         removeFromCart,
+        addToBuyer,
         state,
     }
 }
