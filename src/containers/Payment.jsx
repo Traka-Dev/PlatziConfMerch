@@ -1,14 +1,16 @@
 import React, { useContext } from 'react'
+import { useNavigate } from "react-router-dom";
 import { PayPalButton } from 'react-paypal-button-v2'
 import { AppContext } from '../context/AppContext'
 import { handleSumTotal } from '../utils/handleSumTotal'
 import config from '../config'
 import '../styles/componets/Payment.css'
 
-const Payment = ({ navigate }) => {
+const Payment = () => {
 
     const { state, addNewOrder } = useContext(AppContext)
     const { cart, buyer } = state
+    const navigate = useNavigate()
     const paypalOptions = {
         clientId: config.clientIdPaypal,
         intent: 'capture',
@@ -29,7 +31,8 @@ const Payment = ({ navigate }) => {
                 payment: data,
             }
             addNewOrder(newOrder)
-            navigate.push('/')
+            navigate('/checkout/success')
+
         }
     }
 
