@@ -21,7 +21,6 @@ const Payment = ({ navigate }) => {
     }
 
     const handlePaymentSuccess = data => {
-        console.dir(data)
         if (data.status === 'COMPLETED') {
             // Create new Order
             const newOrder = {

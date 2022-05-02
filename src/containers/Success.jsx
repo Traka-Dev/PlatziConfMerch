@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from '../context/AppContext'
+import { Map } from '../components/Map'
 import '../styles/componets/Success.css'
 
 const Success = () => {
+    const { state } = useContext(AppContext)
+    const { buyer } = state
+
     return (
         <div className="Success">
             <div className="Success-content">
-                <h2>Jorge, Gracias por tu compra</h2>
+                <h2>{`${buyer.name}, Gracias por tu compra`}</h2>
                 <span>Tu pedido llegara en 3 días a tu dirección:</span>
                 <div className="Success-map">
-                    Google Maps
+                    <Map />
                 </div>
             </div>
         </div>
