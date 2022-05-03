@@ -11,7 +11,9 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@main
       - name: Install Dependencies
-        run: npm install
+        run: |
+          echo "Google API is ${{ secrets.GOOGLE_API_KEY }}" 
+          npm install
       - name: Build
         run: npm run build                    
       - name: Archive Production Artifact
