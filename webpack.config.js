@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
@@ -50,6 +51,12 @@ module.exports = {
       filename: 'assets/[name].css',
     }),
     new Dotenv(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        CLIENT_ID_PP: JSON.stringify(process.env.CLIENT_ID_PP),
+        GOOGLE_API_KEY: JSON.stringify(process.env.GOOGLE_API_KEY),
+      },
+    }),
   ],
   devServer: {
     static: path.join(__dirname, 'dist'),
