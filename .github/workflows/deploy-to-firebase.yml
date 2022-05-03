@@ -10,10 +10,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Build
-        run: npm run build
-        env:
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-   	      CLIENT_ID_PP: ${{ secrets.CLIENT_ID_PP }}
+        run: npm run build        
       - name: Archive Production Artifact
         uses: actions/upload-artifact@main
         with:
