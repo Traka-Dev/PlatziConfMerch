@@ -1,8 +1,5 @@
 name: Build and Deploy
 on: [push]
-env:
-  GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-  CLIENT_ID_PP: ${{ secrets.CLIENT_ID_PP }}
 jobs:
   build:
     name: Build    
@@ -13,7 +10,10 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Build
-        run: npm run build                    
+        run: npm run build
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          CLIENT_ID_PP: ${{ secrets.CLIENT_ID_PP }}                    
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master        
         with:

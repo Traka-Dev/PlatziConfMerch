@@ -50,7 +50,12 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'assets/[name].css',
     }),
-    new Dotenv(),
+    new Dotenv({
+      path: './.env',
+      safe: true,
+      systemvars: true,
+      defaults: false
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         CLIENT_ID_PP: JSON.stringify(process.env.CLIENT_ID_PP),
